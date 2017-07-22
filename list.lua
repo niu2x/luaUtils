@@ -4,8 +4,8 @@ setmetatable(List, {
 	__index = table
 })
 
-function List:new()
-	local list = {}
+function List:new(l)
+	local list = l or {}
 	setmetatable(list, {
 		__index = List,
 		__tostring = List.tostring
