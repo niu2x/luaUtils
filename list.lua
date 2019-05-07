@@ -1,9 +1,19 @@
+--- List
+-- List Container 
+-- @module List
+
+
+--- List
+-- @type List
 List = {}
 
 setmetatable(List, {
 	__index = table
 })
 
+--- constructor
+-- @tparam table l
+-- @treturn List instance of list
 function List:new(l)
 	local list = l or {}
 	setmetatable(list, {
@@ -13,6 +23,10 @@ function List:new(l)
 	return list
 end
 
+--- partition a list to two list
+-- @func op, a function return boolean, decide how to partition
+-- @treturn List elements that make op return true
+-- @treturn List elements that make op return false
 function List:partition( op )
 	local true_ret = List:new()
 	local false_ret = List:new()
@@ -28,11 +42,17 @@ function List:partition( op )
 	return true_ret, false_ret
 end
 
+--- filter a list 
+-- @tparam func op, return true if a elem passed
+-- @treturn List elements that pass filter func
 function List:filter( op )
 	local ret = self:partition(op)
 	return ret
 end
 
+--- take head N elems if all of the N elems passed and the N+1 failed. 
+-- @tparam func op, return true if a elem passed
+-- @treturn List elements
 function List:takeWhile( op )
 	local ret = List:new()
 
@@ -48,6 +68,10 @@ function List:takeWhile( op )
 
 	return ret
 end
+
+--- drop head N elems if all of the N elems passed and the N+1 failed. 
+-- @tparam func op, return true if a elem passed
+-- @treturn List elements
 
 function List:dropWhile( op )
 	local ret = List:new()
@@ -65,6 +89,8 @@ function List:dropWhile( op )
 	return ret
 end
 
+--- format a list as string
+-- @treturn string string
 function List:tostring( ... )
 	
 	local str = ''
@@ -79,6 +105,10 @@ function List:tostring( ... )
 	return str
 end
 
+--- find a elem fulfill condition 
+-- @param func op return true if elem fulfill condition
+-- @treturn boolean true if finded
+-- @treturn int index of first elem that fulfill condition
 function List:find( op )
 
 	local finded, finded_index
@@ -93,6 +123,8 @@ function List:find( op )
 	return finded, finded_index
 end
 
+--- walk a list, process every elem
+-- @tparam func op processor, stop walk if return true.
 function List:__walk( op )
 	for index, value in ipairs(self) do
 		if op(value, index) then
@@ -101,6 +133,8 @@ function List:__walk( op )
 	end
 end
 
+--- reverse walk a list, process every elem
+-- @tparam func op processor, stop walk if return true.
 function List:__walk_reverse( op )
 	local len = #self
 	for index, value in ipairs(self) do
@@ -111,6 +145,9 @@ function List:__walk_reverse( op )
 	end
 end
 
+--- get a new list, every elem is map from current list.
+-- @tparam func elem->elem
+-- @treturn List new list 
 function List:map( op )
 	local ret = List:new()
 	self:__walk(function ( value )

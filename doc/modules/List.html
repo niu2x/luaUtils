@@ -1,0 +1,382 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>LuaUtils</title>
+    <link rel="stylesheet" href="../ldoc.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>ldoc</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Class_List">Class List </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/json.html">json</a></li>
+  <li><strong>List</strong></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>List</code></h1>
+<p>List
+ List Container</p>
+<p></p>
+
+
+<h2><a href="#Class_List">Class List </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#List:new">List:new (l)</a></td>
+	<td class="summary">constructor</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List:partition">List:partition (op)</a></td>
+	<td class="summary">partition a list to two list</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List:filter">List:filter (op)</a></td>
+	<td class="summary">filter a list</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List:takeWhile">List:takeWhile (op)</a></td>
+	<td class="summary">take head N elems if all of the N elems passed and the N+1 failed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List:dropWhile">List:dropWhile (op)</a></td>
+	<td class="summary">drop head N elems if all of the N elems passed and the N+1 failed.</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List:tostring">List:tostring (...)</a></td>
+	<td class="summary">format a list as string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List:find">List:find (func)</a></td>
+	<td class="summary">find a elem fulfill condition</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List:__walk">List:__walk (op)</a></td>
+	<td class="summary">walk a list, process every elem</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List:__walk_reverse">List:__walk_reverse (op)</a></td>
+	<td class="summary">reverse walk a list, process every elem</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#List:map">List:map (elem)</a></td>
+	<td class="summary">get a new list, every elem is map from current list.</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header has-description"><a name="Class_List"></a>Class List </h2>
+
+          <div class="section-description">
+          List
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "List:new"></a>
+    <strong>List:new (l)</strong>
+    </dt>
+    <dd>
+    constructor
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">l</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.3/manual.html#6.6">table</a></span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/List.html#List">List</a></span>
+        instance of list
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List:partition"></a>
+    <strong>List:partition (op)</strong>
+    </dt>
+    <dd>
+    partition a list to two list
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">op</span>
+            <span class="types"><span class="type">func</span></span>
+        , a function return boolean, decide how to partition
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><a class="type" href="../modules/List.html#List">List</a></span>
+        elements that make op return true</li>
+        <li>
+           <span class="types"><a class="type" href="../modules/List.html#List">List</a></span>
+        elements that make op return false</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List:filter"></a>
+    <strong>List:filter (op)</strong>
+    </dt>
+    <dd>
+    filter a list
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">op</span>
+            <span class="types"><span class="type">func</span></span>
+        , return true if a elem passed
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/List.html#List">List</a></span>
+        elements that pass filter func
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List:takeWhile"></a>
+    <strong>List:takeWhile (op)</strong>
+    </dt>
+    <dd>
+    take head N elems if all of the N elems passed and the N+1 failed.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">op</span>
+            <span class="types"><span class="type">func</span></span>
+        , return true if a elem passed
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/List.html#List">List</a></span>
+        elements
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List:dropWhile"></a>
+    <strong>List:dropWhile (op)</strong>
+    </dt>
+    <dd>
+    drop head N elems if all of the N elems passed and the N+1 failed.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">op</span>
+            <span class="types"><span class="type">func</span></span>
+        , return true if a elem passed
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/List.html#List">List</a></span>
+        elements
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List:tostring"></a>
+    <strong>List:tostring (...)</strong>
+    </dt>
+    <dd>
+    format a list as string
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.3/manual.html#6.4">string</a></span>
+        string
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List:find"></a>
+    <strong>List:find (func)</strong>
+    </dt>
+    <dd>
+    find a elem fulfill condition
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">func</span>
+         op return true if elem fulfill condition
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">boolean</span></span>
+        true if finded</li>
+        <li>
+           <span class="types"><span class="type">int</span></span>
+        index of first elem that fulfill condition</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List:__walk"></a>
+    <strong>List:__walk (op)</strong>
+    </dt>
+    <dd>
+    walk a list, process every elem
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">op</span>
+            <span class="types"><span class="type">func</span></span>
+         processor, stop walk if return true.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List:__walk_reverse"></a>
+    <strong>List:__walk_reverse (op)</strong>
+    </dt>
+    <dd>
+    reverse walk a list, process every elem
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">op</span>
+            <span class="types"><span class="type">func</span></span>
+         processor, stop walk if return true.
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "List:map"></a>
+    <strong>List:map (elem)</strong>
+    </dt>
+    <dd>
+    get a new list, every elem is map from current list.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">elem</span>
+            <span class="types"><span class="type">func</span></span>
+        ->elem
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/List.html#List">List</a></span>
+        new list
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2019-05-07 23:59:34 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
